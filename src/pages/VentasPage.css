@@ -1,0 +1,81 @@
+/* VentasPage.css */
+
+.ventas-page-container {
+  padding: 2rem;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.ventas-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.ventas-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.ventas-header p {
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.loading-message,
+.error-message,
+.no-sorteos-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #718096;
+  margin-top: 4rem;
+}
+
+.error-message {
+  color: #e53e3e;
+}
+
+.sorteos-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.8rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sorteo-card-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: #2d3748;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.sorteo-card-link:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+.sorteo-card-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%; /* Makes the logo circular */
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.sorteo-card-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}

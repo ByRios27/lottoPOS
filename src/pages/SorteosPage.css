@@ -1,0 +1,259 @@
+/* SorteosPage.css */
+
+.sorteos-page-container {
+  padding: 2rem;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.sorteos-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.sorteos-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.sorteos-header p {
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.sorteo-form-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sorteo-form-card h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.sorteo-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.sorteo-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+.sorteo-form input[type="text"],
+.sorteo-form input[type="number"],
+.sorteo-form input[type="time"],
+.sorteo-form input[type="file"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sorteo-form input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.sorteo-form input[type="file"] {
+    padding: 0.5rem;
+    background-color: #f7fafc;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #4F46E5, #818CF8);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 10px rgba(0,0,0,0.15);
+}
+
+.submit-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-weight: 500;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Sorteos List */
+.sorteos-list-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.sorteos-list-container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.sorteos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.sorteo-card-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sorteo-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+.sorteo-card-item.deactivated {
+  opacity: 0.6;
+  background-color: #f7fafc;
+}
+
+.sorteo-logo {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sorteo-info {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.sorteo-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.sorteo-info p {
+  color: #718096;
+  margin-bottom: 0.25rem;
+}
+
+.sorteo-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f7fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Switch toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #48bb78; /* Green */
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Delete button */
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e53e3e;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #fed7d7;
+  color: #c53030;
+}
+
+.delete-btn svg {
+    width: 24px;
+    height: 24px;
+}

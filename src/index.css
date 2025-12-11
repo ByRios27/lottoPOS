@@ -166,15 +166,21 @@ body {
 }
 
 /* =================================== */
-/*  ICON MENU GRID STYLES              */
+/*  DASHBOARD MENU GRID STYLES         */
 /* =================================== */
-.icon-menu-grid {
+.dashboard-menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
 }
 
-.menu-item-card {
+.dashboard-menu-item {
+  /* Reset button styles */
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  
+  /* Card styles from old .menu-item-card */
   background-color: #ffffff10;
   border: 1px solid #ffffff20;
   border-radius: 18px;
@@ -185,23 +191,27 @@ body {
   justify-content: center;
   gap: 12px;
   color: #ffffff;
-  text-decoration: none;
   transition: all 0.25s ease;
 }
 
-.menu-item-card:hover {
+.dashboard-menu-item:hover {
   transform: translateY(-5px) scale(1.03);
   background-color: #ffffff1a;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
-.menu-item-card svg {
-  width: 48px;
+.dashboard-menu-emoji {
+  font-size: 40px;
+  line-height: 1;
   height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.menu-item-card span {
-  font-weight: 600; /* semibold */
+.dashboard-menu-label {
+  font-weight: 600;
   font-size: 16px;
 }
 
@@ -219,12 +229,12 @@ body {
     height: 140px;
   }
 
-  .icon-menu-grid {
+  .dashboard-menu-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
   
-  .menu-item-card {
+  .dashboard-menu-item {
     padding: 20px; /* Mayor padding para toque facil */
   }
 }
@@ -234,13 +244,68 @@ body {
     padding: 30px 15px;
   }
 
-  .icon-menu-grid {
+  .dashboard-menu-grid {
     grid-template-columns: 1fr; /* 1 columna */
   }
 
-  .menu-item-card {
+  .dashboard-menu-item {
     width: 100%;
     max-width: 190px;
     margin: 0 auto;
+  }
+}
+
+/* =================================== */
+/*  PAGE SHELL STYLES                  */
+/* =================================== */
+.app-page-root {
+  min-height: 100vh;
+  /* El fondo ya está en el body, así que se hereda */
+}
+
+.app-page-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 96px 16px 40px;
+}
+
+.app-page-card {
+  background: rgba(10, 48, 37, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 28px 22px 26px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-page-header {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.app-page-title {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  margin: 0;
+}
+
+.app-page-subtitle {
+  margin-top: 4px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.app-page-content {
+  margin-top: 10px;
+}
+
+/* Page Shell Responsive */
+@media (max-width: 768px) {
+  .app-page-main {
+    padding: 80px 12px 30px;
+  }
+
+  .app-page-card {
+    padding: 20px 16px 22px;
   }
 }
