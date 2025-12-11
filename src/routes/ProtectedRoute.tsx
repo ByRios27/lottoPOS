@@ -4,30 +4,39 @@ import type { User } from "firebase/auth";
 import { auth } from "../firebase";
 import { Navigate } from "react-router-dom";
 
-interface ProtectedRouteProps {
+interface Props {
   children: ReactNode;
 }
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+export default function ProtectedRoute({ children }: Props) {
   const [user, setUser] = useState<User | null | undefined>(undefined);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser ?? null);
+    const unsub = onAuthStateChanged(auth, (u) => {
+      setUser(u ?? null);
     });
-
-    return () => unsubscribe();
+    return () => unsub();
   }, []);
 
   if (user === undefined) {
     return (
-      <div className="loading-screen">
+      <div
+        style={{
+          color: "#fff",
+          background: "#000",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "28px",
+        }}
+      >
         Cargando...
       </div>
     );
   }
 
-  if (user === null) {
+  if (!user) {
     return <Navigate to="/login" replace />;
   }
 

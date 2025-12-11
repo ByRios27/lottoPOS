@@ -1,30 +1,50 @@
-import TopBar from "../components/TopBar";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 import IconMenuGrid from "../components/IconMenuGrid";
 
-const BUSINESS_NAME = "Hoy Gano Yo";
-const DEFAULT_LOGO = "/logo-default.png";
+const LogoutIcon = () => (
+  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+  </svg>
+);
 
 export default function DashboardPage() {
-  return (
-    <div className="app-bg">
-      <TopBar />
-      <main className="dashboard-main">
-        <div className="dashboard-center">
-          <div className="dashboard-logo-circle">
-            <img
-              src={DEFAULT_LOGO}
-              alt={BUSINESS_NAME}
-              className="dashboard-logo"
-            />
-          </div>
-          <h1 className="dashboard-title">{BUSINESS_NAME}</h1>
-          <p className="dashboard-subtitle">
-            Panel principal · ventas, sorteos y control
-          </p>
-        </div>
+  const navigate = useNavigate();
 
-        <IconMenuGrid />
-      </main>
-    </div>
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/login");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
+
+  return (
+    <>
+      <button className="logout-button" onClick={handleLogout}>
+        <LogoutIcon />
+        <span>Cerrar sesión</span>
+      </button>
+
+      <div className="dashboard-page-container">
+        <header className="dashboard-header">
+          <img 
+            src="/logo-default.svg" 
+            alt="Logo del Negocio" 
+            className="dashboard-logo" 
+          />
+          <h1 className="dashboard-business-name">Hoy Gano Yo</h1>
+          <p className="dashboard-subtitle">
+            Panel principal - Ventas, sorteos y control
+          </p>
+        </header>
+        
+        <main>
+          <IconMenuGrid />
+        </main>
+      </div>
+    </>
   );
 }

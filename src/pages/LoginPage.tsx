@@ -3,39 +3,32 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
-const BUSINESS_NAME = "Hoy Gano Yo";
-const DEFAULT_LOGO = "/logo-default.png";
-
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/", { replace: true });
+      navigate("/");
     } catch (err) {
       console.error(err);
-      setError("Credenciales incorrectas o usuario no autorizado.");
+      setError("Credenciales incorrectas. Inténtalo de nuevo.");
     }
   };
 
   return (
-    <div className="login-bg">
+    <div className="login-page-container">
       <div className="login-card">
-        <img src={DEFAULT_LOGO} alt={BUSINESS_NAME} className="login-logo" />
-        <h1 className="login-title">{BUSINESS_NAME}</h1>
-        <p className="login-subtitle">Inicia sesión para continuar</p>
-
-        <form onSubmit={handleSubmit} className="login-form">
+        <h1 className="login-title">Iniciar sesión</h1>
+        <form className="login-form" onSubmit={handleLogin}>
           <input
             type="email"
-            placeholder="Correo electrónico"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -47,8 +40,8 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <button type="submit">Acceder</button>
           {error && <p className="login-error">{error}</p>}
-          <button type="submit">Iniciar sesión</button>
         </form>
       </div>
     </div>

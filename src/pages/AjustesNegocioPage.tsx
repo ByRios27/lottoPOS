@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage, auth } from "../firebase";
@@ -11,11 +11,6 @@ export default function AjustesNegocioPage() {
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState(logoUrl);
   const [status, setStatus] = useState("");
-
-  useEffect(() => {
-    setName(businessName);
-    setLogoPreview(logoUrl);
-  }, [businessName, logoUrl]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -41,7 +36,7 @@ export default function AjustesNegocioPage() {
       await setDoc(docRef, {
         name: name,
         logoUrl: newLogoUrl,
-      });
+      }, { merge: true });
 
       setStatus("¡Cambios guardados con éxito!");
     } catch (error) { 
